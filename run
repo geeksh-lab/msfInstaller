@@ -23,7 +23,7 @@ set -o errexit
 
 
 
-source config.sh
+source config_file
 :start:
 #try to install require package
 :requirePkg:
