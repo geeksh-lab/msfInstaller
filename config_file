@@ -19,9 +19,7 @@ then
 	return ${UID}
 else
 	echo "[Trusted] this installer require administrator privileges Use sudo su to log as root and reload"
-	{
-	 `su`
- }
+	echo "Connectez vous en tant que superutilisateur root avant de demarrer le script !!!!!!!!!!"
 fi
 
 }
