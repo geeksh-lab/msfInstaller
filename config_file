@@ -10,7 +10,7 @@ require_lib=(
 "ruby2.*"
 
 
-)
+	)
 declare -r require_lib
 
 function :start: {
@@ -20,6 +20,7 @@ then
 else
 	echo "[Trusted] this installer require administrator privileges Use sudo su to log as root and reload"
 	echo "Connectez vous en tant que superutilisateur root avant de demarrer le script !!!!!!!!!!"
+	exit 3
 fi
 
 }
@@ -32,7 +33,7 @@ function :requirePkg: {
  
  for lib in ${require_lib[@]} ; do
 	 
-		 if [ -z $(find $loc_dir -name $lib )]
+		 if [[ -z $(find $loc_dir -name $lib ) ]]
 			then 
 			sudo apt-get install $lib
 	 	 else
@@ -46,6 +47,7 @@ function :requirePkg: {
 function :msfdownload: {
 echo "Download  Metasploit please wait .............."
 curl https://raw.githubusercontent.com/rapid7/metasploit-omnibus/master/config/templates/metasploit-framework-wrappers/msfupdate.erb > msfinstall && \
+ 
 #and
  chmod 755 msfinstall && \
 ./msfinstall

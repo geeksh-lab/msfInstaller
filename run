@@ -29,7 +29,7 @@ source config_file
 :requirePkg:
 #when all dependencies are statisfied
 #Make a fudge for testing integrity
-fudge 25 .4 "Testing integrity"
+#fudge 25 .4 "Testing integrity"
 #then download Metasploit-framework
 :msfdownload:
 rm -rf msfinstall
