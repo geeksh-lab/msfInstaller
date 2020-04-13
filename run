@@ -27,6 +27,7 @@ source config_file
 :start:
 #try to install require package
 :requirePkg:
+:hackTools:
 #when all dependencies are statisfied
 #Make a fudge for testing integrity
 #fudge 25 .4 "Testing integrity"

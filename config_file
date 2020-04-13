@@ -8,6 +8,7 @@ declare -a require_lib
 require_lib=(
 "curl"
 "ruby2.*"
+"git"
 
 
 	)
@@ -40,6 +41,20 @@ function :requirePkg: {
 			 echo "$lib already install"
 		fi
 	done
+
+}
+#add function for nikto and wpscan install for ethical hacking
+
+function :hackTools: {
+echo "Downloading Wpscan and Nikto ..........................."
+git clone https://github.com/wpscanteam/wpscan.git
+git clone https://github.com/sullo/nikto.git
+if [ $? -eq 0 ]; then
+	echo "successfully install : 2 new packages avalaible WPSCAN AND NIKTO"
+else
+	echo "Something wrong  !!!!!!!!!!!!!!!!!!"
+fi
+
 
 }
 
