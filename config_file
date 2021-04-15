@@ -9,8 +9,6 @@ require_lib=(
 "curl"
 "ruby2.*"
 "git"
-
-
 	)
 declare -r require_lib
 
