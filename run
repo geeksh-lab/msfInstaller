@@ -34,4 +34,4 @@ fudge 25 .4 "Testing integrity"
 #then download Metasploit-framework
 :msfdownload:
 rm -rf msfinstall
-echo "Done !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+echo "run msfconsole to check your script"
