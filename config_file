@@ -2,15 +2,40 @@
 UID_ROOT=$((0x0))
 binfile=/usr/bin
 config_dir=/etc/
-
-
-declare -a require_lib
-require_lib=(
+SYS_VERSION=$(uname)
+require_lib_LINUX=(
 "curl"
-"ruby2.*"
+"ruby2.5"
+"git"
+)
+require_lib_MACOS=(
+"curl"
+"ruby@2.5"
 "git"
 	)
-declare -r require_lib
+  if [ "$(uname)" == "Linux" ];
+    then
+	require_lib=(
+"curl"
+"ruby2.5"
+"git"
+)
+    else
+    brew cleanup;echo "cleanup succesfully"
+    require_lib=(
+"ruby@2.5"
+"curl"
+"git"
+	)
+    fi
+ declare -a require_lib
+ printf '%s\n' "${require_lib[@]}"
+
+
+
+
+
+
 
 function :start: {
 if [[ ${UID} -eq $UID_ROOT ]];
@@ -24,17 +49,25 @@ fi
 
 }
 
+
 function :requirePkg: {
  local loc_dir
+ printf '%s\n' "${require_lib[@]}"
  
  
  loc_dir=$binfile
+
  
  for lib in ${require_lib[@]} ; do
 	 
 		 if [[ -z $(find $loc_dir -name $lib ) ]]
 			then 
+            if [ "$(uname)" == "Linux" ];
+            then
 			sudo apt-get install $lib
+            else
+            brew install $lib
+            fi
 	 	 else
 			 echo "$lib already install"
 		fi
