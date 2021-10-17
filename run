@@ -24,7 +24,9 @@ set -o errexit
 
 
 source config_file
+if [ $SYS_VERSION == "Linux" ];then
 :start:
+fi
 #try to install require package
 :requirePkg:
 :hackTools:
