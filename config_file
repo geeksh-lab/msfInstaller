@@ -89,14 +89,21 @@ fi
 
 }
 
-#function for metasploit install
-function :msfdownload: {
+#function for metasploit install for linux user
+function :msfdownload:linux: 
+{
 echo "Download  Metasploit please wait .............."
 curl https://raw.githubusercontent.com/rapid7/metasploit-omnibus/master/config/templates/metasploit-framework-wrappers/msfupdate.erb > msfinstall && \
  
 #and
  chmod 755 msfinstall && \
 ./msfinstall
+}
+
+# function for metasploit install for mac user
+function :msfdownload:macOs:
+{
+brew install --cask metasploit
 }
 
 

@@ -24,16 +24,20 @@ set -o errexit
 
 
 source config_file
-if [ $SYS_VERSION == "Linux" ];then
-:start:
-fi
-#try to install require package
+#try to install require package and hackingTools
 :requirePkg:
 :hackTools:
+if [ $SYS_VERSION == "Linux" ];then
+:start:
 #when all dependencies are statisfied
 #Make a fudge for testing integrity
 fudge 25 .4 "Testing integrity"
 #then download Metasploit-framework
-:msfdownload:
+:msfdownload:linux
 rm -rf msfinstall
 echo "run msfconsole to check your script"
+elif [ $SYS_VERSION == "Darwin" ];then
+:msfdownload:macOs
+fi
+
+
